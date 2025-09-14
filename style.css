@@ -225,3 +225,36 @@
   margin-left: auto;
   margin-right: auto;
 }
+/* Header readability: background only is translucent, text stays solid */
+/* Height of the top contact bar on desktop */
+:root { --topbar-h: 48px; }  /* tweak to 44–56px if your bar is taller/shorter */
+
+.site-header{
+  position: absolute;
+  left: 0; width: 100%;
+  z-index: 20;
+  background: rgba(0,0,0,0.35);
+  top: 0; /* default for mobile where the top bar is hidden */
+}
+
+/* On desktop (md and up), offset header by the contact bar height */
+@media (min-width: 768px){
+  .site-header{ top: var(--topbar-h); }
+}
+
+/* Keep the mobile slide-down menu dark */
+.mobile-menu-panel{ background: rgba(0,0,0,0.9); }
+
+  
+  /* Force white text in header and links */
+  .site-header, .site-header a, .site-header h1 { color: #fff !important; }
+  .nav-link:hover { color: #d6d3d1 !important; } /* subtle hover */
+  
+  /* Mobile menu keeps a darker backdrop */
+  .mobile-menu-panel{
+    background: rgba(0,0,0,0.9);
+  }
+  
+  /* Undo the old utility that faded the whole header, if it exists */
+  .bg-opacity-20{ opacity: 1 !important; }   /* neutralize global opacity on header */
+  
